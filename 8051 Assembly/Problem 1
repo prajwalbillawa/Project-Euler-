@@ -1,0 +1,30 @@
+	      ORG 0000H
+	      MOV R0,#9;MOVE 10 FOR LOOP
+        MOV R2,#0 ; ANSWER STORED HERE
+HERE :  MOV A,R0 ; MOV NUMBER TO BE TESTED INTO A
+	      MOV B,#3
+	      DIV AB ; DIVIDE AND GET REMAINDER
+	      MOV R1,B;
+	      CJNE R1,#0,NEXT ; CHECK IF REMIANDER by 3 IS 0
+
+	      MOV A,R2 ;
+	      ADD A,R0;
+	      MOV R2,A;
+
+	      DJNZ R0,HERE;
+
+NEXT :  MOV A,R0 ; MOV NUMBER TO BE TESTED INTO A
+	      MOV B,#5
+	      DIV AB ; DIVIDE AND GET REMAINDER
+	      MOV R1,B;
+	      CJNE R1,#0,SKIP ; CHECK IF REMIANDER by 3 IS 0
+
+	      MOV A,R2 ;
+	      ADD A,R0;
+	      MOV R2,A;
+
+	      DJNZ R0,HERE ; STAY IN LOOP TILL 0
+
+SKIP :  DJNZ R0,HERE;
+    
+	      END
